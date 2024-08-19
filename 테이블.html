@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table {
+            border-collapse: collapse; /* Ensures that borders are touching with no extra space */
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #6c63ff;
+            color: white;
+        }
+        .total, .summary {
+            background-color: #d1d1ff;
+        }
+    </style>
+    
+</head>
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <th colspan="3">오늘의 수입/지출</th>
+            </tr>
+            <tr>
+                <th>내용</th>
+                <th>수입</th>
+                <th>지출</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>월급!</td>
+                <td>1,000,000</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>점심값</td>
+                <td></td>
+                <td>5,000</td>
+            </tr>
+            <tr>
+                <td>부모님선물</td>
+                <td></td>
+                <td>30,000</td>
+            </tr>
+            <tr>
+                <td rowspan="3" class="summary">총계</td>
+                <td>1,000,000</td>
+                <td>35,000</td>
+            </tr>
+            <tr>
+                <td>남은 돈</td>
+                <td>965,000</td>
+            </tr>
+            <tr>
+                <td>dfasdf</td>
+                <td>35,000</td>
+            </tr>
+        </tbody>
+    </table>
+    
+</body>
+</html>
