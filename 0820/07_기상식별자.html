@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기상식별자</title>
+</head>
+<style>
+    a{
+        display: block;
+        text-decoration: none;
+        font-size: 20px;
+        color: black
+
+    }
+    a:hover{
+        /* 마우스 올리면 색 바뀌는 */
+        color: blue;
+        border: 1px solid #999;
+    }
+    a:visited{
+        /* 방문한 적이 있다면 */
+        color: #999;
+    }
+    a:link{
+        /* 방문한 적이 없다면 */
+        color: aquamarine;
+    }
+    input:hover{
+        border-color:blue ;
+    }
+    input:focus{
+        border-color: rgb(216, 41, 193);
+    }
+    label{
+        font-size: 20px;
+        font-weight: bold;
+    }
+    label::before{
+        /* 앞 */
+        content: '*';
+        color: red;
+    }
+    label::after{position: absolute; left: 0px; top: 0px; content: '!'; color: green;
+        /* 뒤 */
+        /* content: '!';
+        color: green; */
+    }
+
+</style>
+<body>
+    <a href="https://google.com">구글</a>
+    <a href="https://agsdgsad.com">이상한 사이트1</a>
+    <a href="https://fasdy.com">이상한 사이트2</a>
+    <a href="https://korea.com">코리아</a>
+
+
+    <label>입력창</label>
+    <input type="text" id="">
+
+
+</body>
+</html>

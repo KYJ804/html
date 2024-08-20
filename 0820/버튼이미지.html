@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button:hover {
+            color: blue;
+            border: solid 2px darkgoldenrod;
+        }
+        .image-container {
+            position: relative;
+            display: inline-block;
+        }
+        .image-container img {
+            display: none; /* 이미지를 초기에는 숨김 */
+            max-width: 100%; /* 이미지 크기를 조정 */
+            height: auto;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            background-color: white;
+            border: none;
+            cursor: pointer;
+            display: none; /* 초기에는 숨김 */
+            z-index: 10; /* 닫기 버튼이 이미지 위에 표시되도록 설정 */
+        }
+    </style>
+</head>
+<body>
+    <button onclick="img('image1')">이미지버튼1</button>
+    <button onclick="img('image2')">이미지버튼2</button>
+    <button onclick="img('image3')">이미지버튼3</button>
+
+    <div class="image-container">
+        <img id="image1" src="../dada.jpg" alt="Image 1">
+        <button class="close-btn" onclick="closeImage('image1')">&times;</button>
+    </div>
+    <div class="image-container">
+        <img id="image2" src="../oo.jpg" alt="Image 2">
+        <button class="close-btn" onclick="closeImage('image2')">&times;</button>
+    </div>
+    <div class="image-container">
+        <img id="image3" src="../tree03.jpg" alt="Image 3">
+        <button class="close-btn" onclick="closeImage('image3')">&times;</button>
+    </div>
+
+    <script>
+        function img(imageId) {
+            // 모든 이미지를 숨기고 닫기 버튼도 숨김
+            var images = document.querySelectorAll('.image-container img');
+            var closeButtons = document.querySelectorAll('.close-btn');
+            for (var i = 0; i < images.length; i++) {
+                images[i].style.display = 'none';
+                closeButtons[i].style.display = 'none';
+            }
+
+            // 클릭된 버튼에 해당하는 이미지만 표시하고 닫기 버튼도 표시
+            var selectedImage = document.getElementById(imageId);
+            selectedImage.style.display = 'block';
+
+            var closeButton = selectedImage.nextElementSibling; // 해당 이미지의 다음 요소(닫기 버튼)
+            closeButton.style.display = 'block';
+        }
+
+        function closeImage(imageId) {
+            var selectedImage = document.getElementById(imageId);
+            selectedImage.style.display = 'none';
+
+            var closeButton = selectedImage.nextElementSibling; // 해당 이미지의 다음 요소(닫기 버튼)
+            closeButton.style.display = 'none';
+        }
+    </script>
+    
+</body>
+</html>

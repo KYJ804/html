@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자 1</title>
+    <style>
+        /* 태그명을 그대로 css 대상으로 선택할 수 있다. */
+        a{
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            color: black;
+        }
+        h1{
+            margin-bottom: 20px;
+        }
+        .wid-100{
+            width: 100px;
+        }
+        .wid-20{
+            width: 20px;
+        }
+        .hei-20{
+            height: 20px;
+        }
+        .title_content{
+            border: 3px dashed blue;
+        }
+        #input_text{
+            padding: 10px;
+            /* border-radius: 5px; */
+            font-size: 10px;
+            font-weight: 20px;
+            border: none;
+            border-bottom: 1px solid #000;
+        }
+        h1[class]{
+            color: red;
+        }
+        h1[target]{
+            border: 1px solid #ccc;
+        }
+        h1[class="www"]{
+            border: 3px solid yellow;
+        }
+        h1.ddd{
+            margin-left: 20px;
+        }
+        a[href="https://www.naver.com"]{
+            color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <h1>제목 타이틀</h1>
+    <h1 class="www">제목1</h1>
+    <h1 class="ddd" target>제목2</h1>
+    <h2 class="title_content wid-100">제목2 타이틀</h2>
+    <a href="https://www.naver.com">NAVER</a> 
+    <a href="https://www.google.com">Google</a>
+    <input type="text" id="input_text">
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 만들기</title>
+    <style>
+        .img_result{
+            height: 200px;
+            border: 1px solid black;
+            display: none;
+        }
+        .tree03{
+            background-image: url(../dada.jpg);
+            background-size: contain;
+        }
+        .tree02{
+            background-image: url(../oo.jpg);
+            background-size: contain;
+        }
+        .tree01{
+            background-image: url(../tree03.jpg);
+            background-size: contain;
+        }
+        input:hover{
+            border: 2px blueviolet solid;
+            background-color: antiquewhite;
+            color: brown;
+        }
+
+    </style>
+</head>
+<body>
+
+    <input type="button" value="이미지만들기1" onclick="imgeCreate('img1')">
+    <div class="img_result tree03" id="img1"></div>
+    <input type="button" value="이미지만들기2" onclick="imgeCreate('img2')">
+    <div class="img_result tree02" id="img2"></div>
+    <input type="button" value="이미지만들기3" onclick="imgeCreate('img3')">
+    <div class="img_result tree01" id="img3" ></div>
+
+
+    <script>
+        function imgeCreate(imgResult){
+            let doe = document.getElementById(imgResult);
+            console.log(doe);
+
+            if(doe.style.display == 'block'){
+                doe.style.display = 'none'
+            }else{
+                doe.style.display = 'block'
+            }
+
+        }
+
+    </script>
+    
+</body>
+</html>
