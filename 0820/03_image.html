@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .img_size2 {
+            width: 200px;
+            height: 400px;
+            border: 1px solid black;
+            overflow-y: auto; /* 스크롤 가능하도록 설정 */
+            background-image: url(../dada.jpg); /* 배경 이미지 설정 */
+            background-size: cover; /* 배경 이미지가 전체를 덮도록 설정 */
+            background-position: center; /* 배경 이미지의 위치를 중앙으로 설정 */
+            position: relative;
+            color: white; /* 텍스트를 배경 위에서 잘 보이게 흰색으로 설정 */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* 스크롤바 숨기기 (웹킷 기반 브라우저) */
+        .img_size2::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* 스크롤바 숨기기 (모든 브라우저) */
+        .img_size2 {
+            -ms-overflow-style: none;  /* 인터넷 익스플로러와 Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="img_size2 inline">
+            <p>금융 당국이 다음 달부터 시행하는 2단계 스트레스 총부채원리금상환비율(DSR) 규제에서 은행권의 수도권 주택담보대출에 대해 스트레스 금리를 기존 계획보다 상향하기로 했다. 서울 지역을 중심으로 집값이 상승하며 가계부채 증가세가 이어지자 수도권의 주담대 대출 한도를 조이는 ‘핀셋 규제’에 나선 것이다.</p>
+            <p>김병환 금융위원장은 20일 서울 명동 은행연합회에서 19개 은행장과 진행한 은행권 간담회에서 "최근 증가세가 확대되고 있는 서울·수도권 은행권 주담대에 대해 DSR 스트레스(가산) 금리를 기존 0.75%포인트 대신 1.2%포인트로 상향 적용할 것"이라고 밝혔다.</p>
+            <p>스트레스 DSR은 나중에 금리가 오를 것에 대비해 미리 대출한도를 더 조이는 규제다. 올해 2월 은행권 주담대를 대상으로 기본 스트레스 금리의 25%를 적용하는 1단계 조치를 도입했다. 다음 달 1일부터는 은행 주담대와 신용대출, 2금융권 주담대에 스트레스 금리의 50%를 적용하는 2단계 조치가 시행된다. 하한은 1.5%포인트, 상한은 3.0%포인트로 뒀다.</p>
+            <p>예컨대 연 소득이 1억 원인 차주가 내달 변동금리(30년 만기 분할상환·대출이자 4.5% 가정)로 수도권 주담대를 받을 경우, 대출한도는 비수도권 6억 400만 원보다 3000만 원 적은 5억 7400만 원으로 책정된다. 스트레스 DSR 도입 전에는 6억 5800만 원, 이달까지 적용되는 1단계 스트레스 DSR에서는 6억 3000만 원까지 대출이 가능했다.</p>
+            <p>금융위는 9월부터 은행권은 모든 가계대출을 대상으로 내부 관리 목적의 DSR를 산출하고 내년부터 이를 기반으로 은행별로 DSR 관리 계획을 수립·이행하라고도 주문했다. 필요 시 DSR 적용 범위를 확대하거나 은행권 주담대 위험 가중치를 상향하는 등의 추가 조치도 검토한다.</p>
+            <p>정부가 이같은 조치에 나선 것은 최근 들어 은행권 주담대를 중심으로 가계대출 증가세가 확대되고 있어서다. 지난달 5대 시중은행 주담대는 약 7조 6000억 원 급증했으며 이달에도 보름 만에(8월 14일 기준) 3조 2000억 원을 돌파하며 증가세가 꺾이지 않고 있다. 김 위원장은 "가계부채가 상반기부터 늘어난 데 대해 경각심을 갖고 은행권과 정부가 합심해 선제적으로 관리할 필요가 있다"고 설명했다.</p>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .img_size{
+            width: 100px;
+            height: 100px;
+        }
+        .img_size2{
+            width: 200px;
+            height: 400px;
+            border: 1px solid black;
+            overflow: hidden;
+        }
+        .first{
+            background-color: RGB(100,122,244,0.5);
+        }
+        .dada_img{
+            background-image: url(../dada.jpg);
+        }
+        .a{
+            background-size: 200px 300px;
+        }
+        .b{
+            background-size: contain;
+        }
+        .c{
+            background-size: cover;
+        }
+        .inline{
+            display: inline-block;
+            vertical-align: top; /* 상단 정렬을 위한 속성 추가 */
+        }
+        .container {
+            text-align: center; /* 가로 정렬을 위해 부모 요소에 적용 */
+        }
+        .scrollable-text{
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="../dada.jpg" alt="다람쥐사진" width="100px" height="100px" class="inline">
+        <img src="../dada.jpg" class="img_size inline">
+        <div class="img_size first inline"></div><!-- 
+        --><div class="img_size dada_img inline"></div><!-- 
+        --><div class="img_size dada_img a inline"></div><!-- 
+        --><div class="img_size dada_img b inline"></div><!-- 
+        --><div class="img_size2 dada_img c inline"></div><!-- 
+        --><div class="dada_img img_size2 b inline scrollable-text">
+            <p>금융 당국이 다음 달부터 시행하는 2단계 스트레스 총부채원리금상환비율(DSR) 규제에서 은행권의 수도권 주택담보대출에 대해 스트레스 금리를 기존 계획보다 상향하기로 했다. 서울 지역을 중심으로 집값이 상승하며 가계부채 증가세가 이어지자 수도권의 주담대 대출 한도를 조이는 ‘핀셋 규제’에 나선 것이다.
+
+                김병환 금융위원장은 20일 서울 명동 은행연합회에서 19개 은행장과 진행한 은행권 간담회에서 "최근 증가세가 확대되고 있는 서울·수도권 은행권 주담대에 대해 DSR 스트레스(가산) 금리를 기존 0.75%포인트 대신 1.2%포인트로 상향 적용할 것"이라고 밝혔다.
+                
+                스트레스 DSR은 나중에 금리가 오를 것에 대비해 미리 대출한도를 더 조이는 규제다. 올해 2월 은행권 주담대를 대상으로 기본 스트레스 금리의 25%를 적용하는 1단계 조치를 도입했다. 다음 달 1일부터는 은행 주담대와 신용대출, 2금융권 주담대에 스트레스 금리의 50%를 적용하는 2단계 조치가 시행된다. 하한은 1.5%포인트, 상한은 3.0%포인트로 뒀다. 1단계가 적용되는 이달 말까지는 스트레스 금리 하한인 1.5%포인트의 25%인 0.38%포인트를 적용하고 2단계부터는 50%인 0.75%포인트, 내년(3단계)부터는 1.5%포인트가 적용될 예정이었다.
+                
+                예컨대 연 소득이 1억 원인 차주가 내달 변동금리(30년 만기 분할상환·대출이자 4.5% 가정)로 수도권 주담대를 받을 경우, 대출한도는 비수도권 6억 400만 원보다 3000만 원 적은 5억 7400만 원으로 책정된다. 스트레스 DSR 도입 전에는 6억 5800만 원, 이달까지 적용되는 1단계 스트레스 DSR에서는 6억 3000만 원까지 대출이 가능했다.
+                
+                금융위는 9월부터 은행권은 모든 가계대출을 대상으로 내부 관리 목적의 DSR를 산출하고 내년부터 이를 기반으로 은행별로 DSR 관리 계획을 수립·이행하라고도 주문했다. 필요 시 DSR 적용 범위를 확대하거나 은행권 주담대 위험 가중치를 상향하는 등의 추가 조치도 검토한다. 위험가중치가 올라가면 은행 입장에서는 자본비율이 떨어질 수 있어 적극적으로 가계대출 취급에 나서기 쉽지 않다.
+                
+                정부가 이같은 조치에 나선 것은 최근 들어 은행권 주담대를 중심으로 가계대출 증가세가 확대되고 있어서다. 지난달 5대 시중은행 주담대는 약 7조 6000억 원 급증했으며 이달에도 보름 만에(8월 14일 기준) 3조 2000억 원을 돌파하며 증가세가 꺾이지 않고 있다. 김 위원장은 "가계부채가 상반기부터 늘어난 데 대해 경각심을 갖고 은행권과 정부가 합심해 선제적으로 관리할 필요가 있다"고 설명했다.</p>
+        </div>
+    </div>
+
+</body>
+</html> -->

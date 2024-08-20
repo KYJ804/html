@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <title>Scroll Effect</title>
+        <style media='screen'>
+            
+            html::-webkit-scrollbar {
+                width:15px;
+                /* 스크롤 크기 */
+            }
+            html::-webkit-scrollbar-thumb {
+                background: #96c4ff;
+                /* 스크롤 색깔 */
+            }
+            html::-webkit-scrollbar-track {
+                background: #fff;
+            }
+            body {
+                margin : 0;
+                padding : 0;
+                box-sizing: 0;
+                overflow-x: hidden;
+            }
+            .image {
+                height: 100vh;
+                width:100vw;
+                background: url(../oo.jpg) no-repeat;
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+            }
+            .content {
+
+                background-size: 100px 200px;
+                background-repeat: repeat;
+                padding:50px;
+                font-family: tahomea;
+                
+            }
+            .content h1{
+                color:rgb(19, 29, 83);
+                margin-top: -15px;
+                font-size: 40px;
+            }
+            .content p {
+                padding : 30px;
+                font-size: 15px;
+                /* font: bold; */
+                color:#333;
+            }
+            div.fixed{
+            color: rgb(49, 141, 194);
+            position: fixed;
+            bottom: 50px;
+            right: 40px;
+
+            cursor: pointer;
+        }
+
+
+        </style>
+    </head>
+    <body>
+
+        <div class="image"></div>
+        <div class="content">
+            
+            <h1>큰글씨 TEST</h1>
+            <p>test1</p>
+            <p>test2</p>
+            <p>test3</p>
+            <p>test4</p>
+
+
+        </div>
+        <article>
+            <div class="fixed" > ^ </div>
+        </article>
+
+
+
+    </body>
+</html>
