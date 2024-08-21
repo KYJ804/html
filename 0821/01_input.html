@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input</title>
+    <style>
+
+
+    </style>
+</head>
+<body>
+    <input type="text" name="" id="user_id">
+
+    <script>
+        //javascript의 변수 타입
+        //var, let, const // 데이터타입 x
+        //변수타입 변수명 = 값
+        var v1='banana';
+        console.log(v1);
+
+        v1 = 'apple';
+        let le1 = 'banana'; // 중복막음
+        //let le1 = 'apple'; // let은 재 선언을 방지해준다
+        
+        const con1 = '상수'; // 변하지 않는 값 밑에서 재 선언해도 적용x
+        //con1 = '111'; // 오류
+        console.log(con1);
+
+        //let 변수 const 상수
+
+        //null, undefinde.
+        //null : 값이 없다
+        //undefinde : 값이 할당 되지 않은 상태
+        let yy;
+        console.log(yy); // undefinde
+        let dd = document.getElementById('오타'); //undefinde
+        console.log(dd);
+
+
+        if(dd == 'undefinde' || dd == null){
+
+        }
+
+        //변수타입 3개 var, let, const
+        //let str = 123; //숫자로 인식
+        //let st = '문자' //문자로 인식
+        let str ='abc';
+        typeof(str); // 데이터 타입을 알려주는 친구
+        console.log('1','2'); //출력시 12
+        console.log(typeof(str), str);
+        
+        //데이터 타입 변환
+        let num = '100'*1; // 마지막에 들어오는 것을 기준으로 판단 *1 하면 숫자로 판단 + ' ' 문자로 받아들임
+        console.log(typeof(num),num);
+
+        //Number(): 숫자 인식
+        //NumberType, 1.2
+        console.log(typeof(Number('1.2')), Number('1.2'));
+
+        //parseInt() : 숫자 인식 (정수)
+        console.log(typeof(parseInt('1.2')),parseInt('1.2')); // 소수점 없애기~
+
+        //parseFloat(): 숫자인식 (소수점 나옵니다)
+        console.log(typeof(parseFloat('1')),parseFloat('1')); 
+
+        console.log(typeof(String(100)), String(100));
+
+        //논리 (true, false)
+        console.log(typeof(Boolean('true')), Boolean('true'));
+
+
+       // console.log() // consile, f12 개발자도구에서 log
+
+    </script>
+    
+</body>
+</html>
