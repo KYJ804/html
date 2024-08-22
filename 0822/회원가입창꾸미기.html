@@ -5,52 +5,143 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입 유효성 검사</title>
     <style>
-        /* 테이블의 전체 스타일 지정 */
+        /* 전체 배경 색상 및 폰트 설정 */
+        body {
+            background-color: #f7f7f7; 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            color: #333; /* 텍스트 기본 색상 */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* 화면 높이 맞추기 */
+        }
+
+        /* 테이블 스타일 */
         table {
-            width: 100%; /* 테이블의 너비를 100%로 설정 */
-            height: 60%; /* 테이블의 높이를 60%로 설정 */
-            margin: 0 auto; /* 테이블을 가운데 정렬 */
-            border-collapse: collapse; /* 테이블 셀 경계선이 하나로 합쳐지도록 설정 */
-            border: 2px solid darkcyan; /* 테이블의 외곽 경계를 청록색으로 지정 */
+            width: 90%; /* 테이블 너비 설정 */
+            max-width: 600px; /* 최대 너비 제한 */
+            background-color: #fff; /* 배경을 흰색으로 설정 */
+            border-radius: 12px; /* 모서리 둥글게 */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 추가 */
+            padding: 20px; /* 테이블 패딩 */
+            animation: fadeIn 1s ease-in-out; /* 페이드 인 애니메이션 */
         }
 
-        /* 각 테이블 행과 셀의 스타일 지정 */
-        tr, td {
-            padding: 10px; /* 셀 안쪽 여백을 10px로 지정 */
-            border-bottom: 1px solid #ddd; /* 셀 하단에 옅은 회색 경계를 추가 */
+        /* 테이블 제목 스타일 */
+        .tt1 {
+            font-size: 24px; /* 큰 제목 크기 */
+            color: #555; /* 부드러운 텍스트 색상 */
+            text-align: center; /* 가운데 정렬 */
+            margin-bottom: 20px; /* 아래 여백 */
         }
 
-        /* 테이블 제목 셀 스타일 지정 */
-        .t1 {
-            font-size: 25px; /* 글자 크기를 25px로 설정 */
-            background-color: rgb(183, 216, 228); /* 셀 배경색을 밝은 청록색으로 설정 */
-            text-align: center; /* 텍스트를 가운데 정렬 */
+        /* 각 테이블 행 및 셀 스타일 */
+        tr {
+            margin-bottom: 10px; /* 행 간의 간격 */
         }
 
-        /* 버튼 행을 가운데 정렬 */
+        td {
+            font-size: 14px; /* 글자 크기 */
+            color: #777; /* 텍스트 색상 */
+            vertical-align: middle; /* 텍스트를 중앙에 정렬 */
+            padding: 21px 0; /*간격*/
+        }
+
+        /* 입력 필드 스타일 */
+        input[type="text"], input[type="password"], input[type="email"], select {
+            width: 80%; /* 너비 100% */
+            padding: 12px; /* 패딩 */
+            border: 1px solid #ddd; /* 옅은 회색 경계 */
+            border-radius: 6px; /* 모서리 둥글게 */
+            box-sizing: border-box; /* 박스 크기 계산 */
+            font-size: 14px; /* 글자 크기 */
+            color: #555; /* 텍스트 색상 */
+            background-color: #fafafa; /* 부드러운 배경색 */
+            transition: border-color 0.3s ease; /* 전환 효과 */
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, select:focus {
+            border-color: #bd5d38; /* 포커스 시 테두리 색상 변경 */
+            outline: none; /* 기본 포커스 아웃라인 제거 */
+        }
+
+        /* 생년월일 입력 필드 스타일 */
+        .birth-input {
+            width: calc(30% - 4px); /* 필드 너비를 작게 설정 */
+            display: inline-block; /* 인라인 블록으로 설정하여 한 줄에 나란히 배치 */
+            margin-right: 5px; /* 오른쪽 여백 추가 */
+        }
+
+        select.birth-select {
+            width: calc(32% - 4px); /* select 필드 너비를 작게 설정 */
+            display: inline-block; /* 인라인 블록으로 설정하여 한 줄에 나란히 배치 */
+            margin-right: 5px; /* 오른쪽 여백 추가 */
+            padding: 12px; /* 패딩 */
+            border: 1px solid #ddd; /* 옅은 회색 경계 */
+            border-radius: 6px; /* 모서리 둥글게 */
+            box-sizing: border-box; /* 박스 크기 계산 */
+            font-size: 14px; /* 글자 크기 */
+            color: #555; /* 텍스트 색상 */
+            background-color: #fafafa; /* 부드러운 배경색 */
+        }
+
+        select.birth-select:focus {
+            border-color: #bd5d38; /* 포커스 시 테두리 색상 변경 */
+            outline: none; /* 기본 포커스 아웃라인 제거 */
+        }
+
+        /* 체크박스 스타일 */
+        input[type="checkbox"] {
+            transform: scale(1.2); /* 크기 조정 */
+            margin-right: 10px; /* 오른쪽 여백 */
+            cursor: pointer; /* 커서 변경 */
+        }
+
+        /* 자기소개 입력 필드 */
+        .tdd {
+            padding: 10px;
+            width: 100%;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            background-color: #fafafa;
+            font-size: 14px;
+            color: #555;
+            margin-top: 8px;
+        }
+
+        .tdd:focus {
+            border-color: #bd5d38; /* 포커스 시 테두리 색상 변경 */
+            outline: none; /* 기본 포커스 아웃라인 제거 */
+        }
+
+        /* 버튼 스타일 */
         .button-row {
             text-align: center;
+            margin-top: 20px;
         }
 
-        /* 버튼 스타일 지정 */
         input[type="button"] {
-            padding: 10px 20px; /* 버튼 안쪽 여백을 지정 */
-            margin: 5px; /* 버튼 주위 여백 지정 */
-            border: none; /* 버튼 경계선 제거 */
-            border-radius: 4px; /* 버튼 모서리를 둥글게 처리 */
-            background-color: darkcyan; /* 버튼 배경색을 청록색으로 지정 */
-            color: white; /* 버튼 텍스트 색상을 흰색으로 지정 */
-            cursor: pointer; /* 마우스 커서가 버튼 위에 있을 때 손 모양으로 변경 */
+            padding: 12px 20px; /* 패딩 설정 */
+            margin: 10px 5px; /* 마진 설정 */
+            border: none; /* 테두리 제거 */
+            border-radius: 8px; /* 모서리 둥글게 */
+            background-color: #bd5d38; /* 따뜻한 색상 */
+            color: white; /* 텍스트 색상 */
+            font-size: 14px; /* 글자 크기 */
+            cursor: pointer; /* 커서 변경 */
+            transition: background-color 0.3s ease; /* 배경색 전환 효과 */
         }
 
-        /* 버튼에 마우스를 올렸을 때의 효과 */
         input[type="button"]:hover {
-            opacity: 0.9; /* 버튼을 약간 투명하게 처리하여 시각적 효과 제공 */
+            background-color: #a04a2d; /* 호버 시 배경색 어둡게 */
         }
 
-        /* 자기소개 입력 필드의 스타일 지정 */
-        .tdd {
-            padding: 20%; /* 안쪽 여백을 크게 설정 */
+        /* 페이드 인 애니메이션 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
@@ -60,63 +151,65 @@
     <table>
         <!-- 첫 번째 행: 테이블 제목 -->
         <tr>
-            <th colspan="2" class="t1">회원 기본 정보</th> <!-- 제목 셀을 두 칸에 걸쳐 설정 -->
+            <th colspan="2" class="tt1">회원 기본 정보</th> 
         </tr>
         
         <!-- 아이디 입력 필드 -->
         <tr>
             <td>아이디</td>
-            <td><input type="text" id="userid"> 4~12자의 영문 대소문자와 숫자로만 입력</td> <!-- 입력 필드와 설명 텍스트 -->
+            <td><input type="text" id="userid" placeholder="아이디를 입력하세요">  <br>
+                4~12자의 영문 대소문자와 숫자로만 입력
+                </td>       
         </tr>
         
         <!-- 비밀번호 입력 필드 -->
         <tr>
             <td>비밀번호</td>
-            <td><input type="password" id="password"> 4~12자의 영문 대소문자와 숫자로만 입력</td> <!-- 비밀번호 입력 필드와 설명 -->
+            <td><input type="password" id="password" placeholder="비밀번호를 입력하세요"> <br>
+                4~12자의 영문 대소문자와 숫자로만 입력</td>
         </tr>
         
         <!-- 비밀번호 확인 입력 필드 -->
         <tr>
             <td>비밀번호 확인</td>
-            <td><input type="password" id="password_confirm"></td> <!-- 비밀번호 확인 입력 필드 -->
+            <td><input type="password" id="password_confirm" placeholder="비밀번호를 다시 입력하세요"></td>
         </tr>
         
         <!-- 이메일 입력 필드 -->
         <tr>
             <td>메일주소</td>
-            <td><input type="email" id="email"> 예)id@domain.com</td> <!-- 이메일 입력 필드와 예시 텍스트 -->
+            <td><input type="email" id="email" placeholder="이메일 주소를 입력하세요"> <br>
+                ex) id@domain.com</td>
         </tr>
         
         <!-- 이름 입력 필드 -->
         <tr>
             <td>이름</td>
-            <td><input type="text" id="name"></td> <!-- 이름 입력 필드 -->
+            <td><input type="text" id="name" placeholder="이름을 입력하세요"></td>
         </tr>
         
         <!-- 두 번째 섹션 제목 -->
         <tr>
-            <th colspan="2" class="t1">개인 신상 정보</th> <!-- 개인 신상 정보 섹션 제목 -->
+            <th colspan="2" class="tt1">개인 신상 정보</th>
         </tr>
         
         <!-- 주민등록번호 입력 필드 -->
         <tr>
             <td>주민등록번호</td>
-            <td><input type="text" id="idcard"> 예)1234561234567</td> <!-- 주민등록번호 입력 필드와 예시 텍스트 -->
+            <td><input type="text" id="idcard" placeholder="예) 1234561234567"></td>
         </tr>
         
         <!-- 생년월일 입력 필드 -->
         <tr>
             <td>생일</td>
             <td>
-                <input type="text" id="year" placeholder="년"> <!-- 년도 입력 필드 -->
-                <select id="month">
+                <input type="text" id="year" class="birth-input" placeholder="년">
+                <select id="month" class="birth-select">
                     <!-- JavaScript로 월 옵션이 동적으로 생성됩니다. -->
                 </select>
-                월
-                <select id="day">
+                <select id="day" class="birth-select">
                     <!-- JavaScript로 일 옵션이 동적으로 생성됩니다. -->
                 </select>
-                일
             </td>
         </tr>
         
@@ -128,130 +221,115 @@
                 <input type="checkbox" name="n2" value="인터넷">인터넷
                 <input type="checkbox" name="n3" value="여행">여행
                 <input type="checkbox" name="n4" value="영화감상">영화감상
-                <input type="checkbox" name="n5" value="음악감상">음악감상 <!-- 체크박스 형태로 관심 분야 선택 -->
+                <input type="checkbox" name="n5" value="음악감상">음악감상
             </td>
         </tr>
         
         <!-- 자기소개 입력 필드 -->
         <tr>
             <td>자기소개</td>
-            <td><input class="tdd" type="text" id="self_intro"></td> <!-- 자기소개 입력 필드 -->
+            <td><input class="tdd" type="text" id="self_intro" placeholder="간단한 자기소개를 입력하세요"></td>
         </tr>
         
         <!-- 버튼 행 -->
         <tr class="button-row">
             <td colspan="2">
-                <input type="button" value="회원가입" onclick="validateForm()"> <!-- 유효성 검사 후 폼 제출 -->
-                <input type="button" value="다시 입력" onclick="resetForm()"> <!-- 폼 초기화 -->
+                <input type="button" value="회원가입" onclick="validateForm()">
+                <input type="button" value="다시 입력" onclick="resetForm()">
             </td>
         </tr>
     </table>
 
     <script>
         //월 ,일
-        // JavaScript로 1부터 12까지의 월과 1부터 31까지의 날을 추가하는 코드
         const monthSelect = document.getElementById('month'); // month select 요소 선택
         const daySelect = document.getElementById('day'); // day select 요소 선택
 
         // 월 옵션을 동적으로 생성하여 추가
         for (let i = 1; i <= 12; i++) {
-            const option = document.createElement('option'); // option 요소 생성
-            option.value = i; // option의 value 속성을 설정
-            option.textContent = i; // option의 표시 텍스트 설정
-            monthSelect.appendChild(option); // select 요소에 option 추가
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = i;
+            monthSelect.appendChild(option);
         }
 
         // 일 옵션을 동적으로 생성하여 추가
         for (let i = 1; i <= 31; i++) {
-            const option = document.createElement('option'); // option 요소 생성
-            option.value = i; // option의 value 속성을 설정
-            option.textContent = i; // option의 표시 텍스트 설정
-            daySelect.appendChild(option); // select 요소에 option 추가
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = i;
+            daySelect.appendChild(option);
         }
-        //
 
         // 유효성 검사 함수
         function validateForm() {
-            // 각 입력 필드의 값을 가져오기
             const userid = document.getElementById('userid').value;
             const password = document.getElementById('password').value;
             const passwordConfirm = document.getElementById('password_confirm').value;
             const email = document.getElementById('email').value;
             const name = document.getElementById('name').value;
-            const idcard = document.getElementById('idcard').value; //주민등록번호
+            const idcard = document.getElementById('idcard').value;
             const year = document.getElementById('year').value;
             const month = document.getElementById('month').value;
             const day = document.getElementById('day').value;
 
-            // 아이디 길이 검사 4글자 이상 12글자 이하
             if (userid.length < 4 || userid.length > 12) {
                 alert("아이디는 4~12자의 영문 대소문자와 숫자로 입력해야 합니다.");
-                document.getElementById('userid').focus(); // 틀린 곳에 포커스 이동
+                document.getElementById('userid').focus();
                 return false;
             }
 
-            // 비밀번호 길이 및 비밀번호 확인 일치 여부 검사
             if (password.length < 4 || password.length > 12) {
                 alert("비밀번호는 4~12자의 영문 대소문자와 숫자로 입력해야 합니다.");
-                document.getElementById('password').focus(); // 틀린 곳에 포커스 이동
+                document.getElementById('password').focus();
                 return false;
             }
 
-            //일치 하는냐
             if (password !== passwordConfirm) {
                 alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
-                document.getElementById('password_confirm').focus(); // 틀린 곳에 포커스 이동
+                document.getElementById('password_confirm').focus();
                 return false;
             }
 
-            // 이메일 형식 검사
             if (!validateEmail(email)) {
                 alert("올바른 이메일 주소를 입력하세요.");
-                document.getElementById('email').focus(); // 틀린 곳에 포커스 이동
+                document.getElementById('email').focus();
                 return false;
             }
 
-            // 이름 입력 여부 검사
             if (name === "") {
                 alert("이름을 입력하세요.");
-                document.getElementById('name').focus(); // 틀린 곳에 포커스 이동
+                document.getElementById('name').focus();
                 return false;
             }
 
-            // 주민등록번호 형식 검사
             if (!validateIDCard(idcard)) {
                 alert("올바른 주민등록번호를 입력하세요.");
-                document.getElementById('idcard').focus(); // 틀린 곳에 포커스 이동
+                document.getElementById('idcard').focus();
                 return false;
             }
 
-            // 생년월일 입력 여부 검사
             if (year === "" || month === "" || day === "") {
                 alert("생년월일을 모두 입력하세요.");
-                document.getElementById('year').focus(); // 틀린 곳에 포커스 이동
+                document.getElementById('year').focus();
                 return false;
             }
 
-            // 모든 유효성 검사를 통과한 경우
             alert("회원가입이 완료되었습니다!");
             return true;
         }
 
-        // 이메일 형식 검사 함수
         function validateEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // 이메일 정규식 패턴
-            return re.test(email); // 이메일이 정규식에 맞는지 검사
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
         }
 
-        // 주민등록번호 형식 검사 함수
         function validateIDCard(idcard) {
-            const re = /^\d{13}$/; // 13자리 숫자 정규식 패턴
-            return re.test(idcard); // 주민등록번호가 정규식에 맞는지 검사
+            const re = /^\d{13}$/;
+            return re.test(idcard);
         }
 
-        // 폼 초기화 함수
         function resetForm() {
-            // 모든 입력 필드를 초기화
             document.getElementById('userid').value = '';
             document.getElementById('password').value = '';
             document.getElementById('password_confirm').value = '';
@@ -259,10 +337,10 @@
             document.getElementById('name').value = '';
             document.getElementById('idcard').value = '';
             document.getElementById('year').value = '';
-            document.getElementById('month').selectedIndex = 0; // 월 선택 초기화
-            document.getElementById('day').selectedIndex = 0; // 일 선택 초기화
-            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => checkbox.checked = false); // 모든 체크박스 해제
-            document.getElementById('self_intro').value = ''; // 자기소개 입력 필드 초기화
+            document.getElementById('month').selectedIndex = 0;
+            document.getElementById('day').selectedIndex = 0;
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
+            document.getElementById('self_intro').value = '';
         }
     </script>
 
