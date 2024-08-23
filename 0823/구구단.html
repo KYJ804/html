@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구구단 계산기</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: calc(100% - 22px);
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            width: 100%;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        .result div {
+            padding: 5px;
+            background-color: #efefef;
+            margin-bottom: 5px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>구구단 계산기</h1>
+        <input type="text" id="num" placeholder="숫자 입력">
+        <input type="text" id="time" placeholder="횟수 입력">
+        <input type="button" value="결과 출력" onclick="generateTable()" class="button">
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function generateTable() {
+            const num = parseInt(document.getElementById('num').value);
+            const time = parseInt(document.getElementById('time').value);
+            let resultDiv = document.getElementById('result');
+
+            // 초기화
+            resultDiv.innerHTML = '';
+
+            // 구구단 계산 및 결과 출력
+            for (let i = 1; i <= time; i++) {
+                let result = num + " x " + i + " = " + (num * i);
+                resultDiv.innerHTML += result + '<br/>';
+            }
+        }
+    </script>
+    
+</body>
+</html>
