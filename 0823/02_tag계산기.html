@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" placeholder="첫 번째 수">
+
+    <select>
+        <option value="+">+</option>
+        <option value="-">-</option>
+
+    </select>
+    <input type="text" placeholder="두번째 수">
+    <input type="button" value="계산" onclick="result()" >
+    <input type="text" placeholder="결과 출력">
+
+    <script>
+        function result() {
+            let do_tag = document.getElementsByTagName('input');
+            let op = document.getElementsByTagName('select')[0].value;
+
+            let firstNum = parseFloat(do_tag[0].value); // [0] 첫번째 태그
+            let secondNum = parseFloat(do_tag[1].value);
+            let rptks;
+
+            if (op == "+") {
+                rptks = firstNum + secondNum;
+            } else if (op == "-") {
+                rptks = firstNum - secondNum;
+            }
+
+            do_tag[3].value = rptks;
+        }
+
+    
+    </script>
+    
+    
+</body>
+</html>
