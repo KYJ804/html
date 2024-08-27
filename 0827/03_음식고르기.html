@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>음식 고르기</h1>
+    <select id="foodImg" onchange="changeImage()">
+        <option value="coffee">커피</option>
+        <option value="cake">케이크</option>
+        <option value="cookie">쿠키</option>
+    </select>
+    <br>
+    <img id="displayImg" src="./coffee.jpg" alt="선택된 음식">
+
+    <script>
+        function changeImage() {
+            let selectedFood = document.getElementById('foodImg').value;
+            document.getElementById('displayImg').src = './' + selectedFood + '.jpg';
+        }
+    </script>
+</body>
+</html>

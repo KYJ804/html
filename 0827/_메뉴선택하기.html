@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="menu01" onchange="box(event)">
+        <option value="coffee">커피</option>
+        <option value="cake">케이크</option>
+    </select>
+
+    <select id="menu02">
+        <!-- 두 번째 메뉴에 동적으로 옵션이 추가됨 -->
+    </select>
+    
+    <script>
+        function box(e){
+            console.log(e.target); //document.getElementById('menu01');
+            let menu01 = document.getElementById('menu01');
+            let menu02 = document.getElementById('menu02');
+            let htmlTag = '';
+
+            if(menu01.value === 'coffee'){
+                htmlTag +='<option>아메리카노</option>';
+                htmlTag +='<option>라떼</option>';
+            }else if(menu01.value === 'cake'){
+                htmlTag +='<option>초코케이크</option>';
+                htmlTag +='<option>치크케이크</option>';
+
+            }
+            menu02.innerHTML = htmlTag;
+
+        }
+    </script>
+    
+</body>
+</html>
