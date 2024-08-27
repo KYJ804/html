@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="menu1" onchange="box()">
+        <option value="coffee">커피</option>
+        <option value="cake">케이크</option>
+    </select>
+
+    <select id="menu2">
+        <!-- 두 번째 메뉴에 동적으로 옵션이 추가됨 -->
+    </select>
+
+    <script>
+        function box() {
+            // 첫 번째 select에서 선택된 값 가져오기
+            let menu1 = document.getElementById('menu1').value;
+
+            // 두 번째 select 요소를 가져옴
+            let menu2 = document.getElementById('menu2');
+
+            // 기존 옵션들을 모두 제거
+            menu2.innerHTML = '';
+
+            // 선택된 값에 따라 옵션 추가
+            if (menu1 === 'coffee') {
+                let option1 = document.createElement('option');
+                option1.value = 'americano';
+                option1.text = '아메리카노';
+                menu2.add(option1);
+
+                let option2 = document.createElement('option');
+                option2.value = 'latte';
+                option2.text = '라떼';
+                menu2.add(option2);
+            } else if (menu1 === 'cake') {
+                let option1 = document.createElement('option');
+                option1.value = 'choco_cake';
+                option1.text = '초코케이크';
+                menu2.add(option1);
+
+                let option2 = document.createElement('option');
+                option2.value = 'strawberry_cake';
+                option2.text = '딸기 케이크';
+                menu2.add(option2);
+            }
+        }
+    </script>
+    
+</body>
+</html>
