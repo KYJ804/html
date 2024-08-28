@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>음식 사진</title>
     <style>
+        /* 메인 이미지 영역 스타일 */
+        .mainPic {
+            width: 80%;                /* 메인 사진의 너비를 설정 */
+            height: 400px;             /* 메인 사진의 높이 설정 */
+            background-color: #f0f0f0; /* 메인 사진의 배경색 설정 */
+            background-size: cover;    /* 메인 사진이 영역을 꽉 채우도록 설정 */
+            background-position: center; /* 메인 사진을 중앙에 배치 */
+            margin-bottom: 20px;       /* 메인 사진 아래에 여백 추가 */
+        }
+
         /* 갤러리 컨테이너 스타일: 사진들을 담을 영역 */
         .gallery {
             display: flex;              /* 사진들을 가로로 나열 */
@@ -21,6 +31,7 @@
             background-color: #f0f0f0;  /* 사진이 로드되지 않았을 때 보이는 배경색 */
             background-size: cover;     /* 사진을 박스에 꽉 채우기 위해 설정 */
             background-position: center; /* 사진이 박스 중앙에 위치하도록 설정 */
+            cursor: pointer;            /* 사진에 마우스를 올렸을 때 포인터 커서로 변경 */
         }
 
         /* 버튼 영역 스타일 */
@@ -42,6 +53,9 @@
     </style>
 </head>
 <body>
+    <!-- 메인 이미지 영역 -->
+    <div class="mainPic" id="mainPic"></div>
+
     <!-- 버튼들이 위치한 영역 -->
     <div class="btn_area">
         <!-- '전체' 버튼: 클릭 시 모든 사진을 표시 -->
@@ -77,8 +91,20 @@
                     const photoDiv = document.createElement('div');  // 새 div 요소 생성
                     photoDiv.className = 'photo';  // 'photo' 클래스 추가
                     photoDiv.style.backgroundImage = `url(${photo.pic})`;  // 배경 이미지로 사진을 설정
+
+                    // 사진 클릭 시 메인 이미지 변경 이벤트 추가
+                    photoDiv.onclick = function() {
+                        setMainImage(photo.pic);  // 메인 이미지를 클릭한 사진으로 변경
+                    };
+
                     gallery.appendChild(photoDiv);  // 갤러리 영역에 새로운 사진 박스 추가
                 });
+        }
+
+        // 메인 이미지를 설정하는 함수
+        function setMainImage(image) {
+            const mainPic = document.getElementById('mainPic');
+            mainPic.style.backgroundImage = `url(${image})`;  // 메인 이미지로 설정
         }
 
         // 페이지가 로드될 때 기본적으로 모든 사진을 표시하기 위해 호출
