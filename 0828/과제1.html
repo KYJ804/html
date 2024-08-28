@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산하기</title>
+</head>
+<body>
+    <input type="text" id="t1" placeholder="첫 번째 숫자">
+    <input type="text" id="t2" placeholder="두 번째 숫자">
+    <input type="button" value="계산" onclick="click1()">
+
+    <script>
+        function click1() {
+            // 입력된 값을 가져오기
+            let num1 = parseFloat(document.getElementById('t1').value);
+            let num2 = parseFloat(document.getElementById('t2').value);
+
+            // 계산 결과를 오브젝트로 저장
+            let result = {
+                plus: num1 + num2,
+                minus: num1 - num2,
+                mul: num1 * num2,
+                // div: (num2 !== 0) ? num1 / num2 : 'Infinity' // 0으로 나누는 경우 처리
+                 div: num1/num2
+            };
+
+            // 콘솔에 출력
+            console.log(result);
+        }
+    </script>
+</body>
+</html>

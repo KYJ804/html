@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+</head>
+<body>
+    <input type="button" value="출력" onclick="Address()">
+    <span id="result">여기에 출력 (obj2의 address )</span>
+
+    <script>
+        let obj1 = {}; 
+        obj1.a = 'apple';
+        obj1.b = 'banana';
+        obj1.fun = start;
+        console.log(typeof(obj1), obj1);
+
+        let arr = ['a', 'b', 'c'];
+        obj1.arr = arr;
+        console.log(obj1);
+
+        let obj2 = new Object();
+        obj2['apple'] = 'apple';
+        obj2['b'] = 'banana';
+        obj2.address = '서울';
+        console.log(obj2);
+        console.log('===============');
+        obj1.obj = obj2;
+        console.log(obj1);
+
+        function start() {
+            alert('start');
+            console.log('start');
+        }
+
+        function Address() {
+            document.getElementById('result').innerText = obj2.address;
+        }
+    </script>
+</body>
+</html>
