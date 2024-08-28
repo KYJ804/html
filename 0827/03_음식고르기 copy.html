@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>음식 고르기</h1>
+    <select id="foodImg" onchange="changeImage()">
+        <option value="coffee" src = "coffee.jpg">커피</option>
+        <option value="cake" src = "cake.jpg">케이크</option>
+        <option value="cookie" src = "cookie.jpg">쿠키</option>
+    </select>
+    <br>
+    
+    <img id="displayImg" src="./coffee.jpg" alt="음식사진">
+
+    <script>
+        const imArr =['./coffee.jpg',
+            "./cake.jpg", "./cookie.jpg"
+        ]
+        //첫번째 방법
+        function changeImage(e){
+            let target = document.getElementById('sel').value;
+            document.querySelector('displayImg').src = imArr[target];
+        }
+        //두번쨰 방법
+        document.querySelector('select').addEventListener('chage', function(e){
+            document.querySelector('#displayImg').src = imArr[e.target.value];
+        })
+
+        // function changeImage() {
+        //     let selectedFood = document.getElementById('foodImg').value;
+        //     document.getElementById('displayImg').src = './' + selectedFood + '.jpg';
+        // }
+    </script>
+</body>
+</html>
