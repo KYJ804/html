@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>발레코어 반응 속도 게임</title>
+    <style>
+        /* 부드럽고 우아한 배경 설정 */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Cormorant Garamond', serif;
+            background-color: #F8EBE8;
+            margin: 0;
+            overflow: hidden;
+            color: #333;
+        }
+
+        /* 중앙 박스 스타일 */
+        .container {
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 20px;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 2s ease;
+        }
+
+        /* 부드러운 애니메이션 효과 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* 버튼 스타일 */
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 0;
+            font-size: 18px;
+            cursor: pointer;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 30px;
+            background-color: rgba(255, 182, 193, 0.6); /* 로맨틱한 파스텔 톤 */
+            color: #333;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        /* 버튼 호버 효과 */
+        .button:hover {
+            background-color: rgba(255, 182, 193, 0.9);
+            transform: scale(1.1);
+        }
+
+        /* 비활성화된 버튼 스타일 */
+        .button:disabled {
+            cursor: not-allowed;
+            background-color: rgba(255, 182, 193, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* 재시작 버튼 스타일 */
+        .restart {
+            background-color: rgba(221, 160, 221, 0.6); /* 연보라색 톤 */
+            color: #333;
+        }
+
+        /* 반응 시간 표시 스타일 */
+        .time {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="time" id="timeDisplay">반응 속도: 0.000초</div>
+        <button id="colorButton" class="button">Click</button>
+        <button id="restartButton" class="button restart">재시작</button>
+    </div>
+
+    <script>
+        let startTime, endTime;
+        let gameActive = false;
+
+        // 게임 시작 함수
+        function startGame() {
+            // 1초에서 3초 사이의 랜덤 시간 후에 배경색 변경
+            const delay = Math.random() * 2000 + 1000;
+            setTimeout(() => {
+                document.querySelector('.container').style.backgroundColor = 'rgba(255, 192, 203, 0.8)';
+                startTime = new Date(); // 시작 시간 기록
+                gameActive = true; // 클릭 가능 상태로 설정
+            }, delay);
+        }
+
+        // 클릭 버튼 이벤트 리스너
+        document.getElementById('colorButton').onclick = function() {
+            if (gameActive) { // 게임이 활성화된 상태에서만 반응 시간 기록
+                endTime = new Date(); // 클릭한 시간 기록
+                const reactionTime = (endTime - startTime) / 1000; // 반응 시간 계산
+                document.getElementById('timeDisplay').innerText = `반응 속도: ${reactionTime.toFixed(3)}초`;
+                gameActive = false; // 게임 종료 상태로 설정
+            }
+        };
+
+        // 재시작 버튼 이벤트 리스너
+        document.getElementById('restartButton').onclick = function() {
+            document.querySelector('.container').style.backgroundColor = 'rgba(255, 255, 255, 0.8)'; // 배경색 초기화
+            document.getElementById('timeDisplay').innerText = '반응 속도: 0.000초'; // 시간 초기화
+            gameActive = false; // 게임 비활성화 상태로 설정
+            startGame(); // 새로운 게임 시작
+        };
+
+        // 페이지 로드 시 첫 게임 시작
+        startGame();
+    </script>
+</body>
+</html>
