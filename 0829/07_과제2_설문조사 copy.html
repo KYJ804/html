@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>좋아하는 목록</title>
+
+    <style>
+        /* 전체 페이지의 배경과 레이아웃을 설정합니다 */
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('../dak.jpg'); /* 배경 이미지 설정 */
+        }
+
+        /* 설문조사 폼의 스타일을 정의합니다 */
+        .report {
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.9); /* 반투명 흰색 배경 */
+            border: 2px solid #000;
+            border-radius: 20px; /* 모서리를 둥글게 */
+        }
+
+        /* 설문조사 제목의 스타일을 정의합니다 */
+        .report .title {
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        .report .title_area {
+            margin-bottom: 30px;
+        }
+
+        /* 설문조사 라벨의 기본 스타일을 정의합니다 */
+        .report label {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        /* 설문조사의 부제목 스타일과 필수 항목 표시 */
+        .report .subtitle {
+            margin-right: 30px;
+        }
+
+        .report .subtitle:before {
+            content: '*';
+            color: red; /* 필수 항목 표시를 위해 빨간색 별표 추가 */
+        }
+
+        /* 입력 영역 스타일을 정의합니다 */
+        .report .report_area {
+            margin: 15px 0px;
+            height: 50px;
+        }
+
+        .report .report_area input[type="text"] {
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            width: 150px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* 텍스트 입력 필드에 대한 hover와 focus 스타일을 정의합니다 */
+        .report .report_area input[type="text"]:hover,
+        .report .report_area input[type="text"]:focus {
+            outline: none;
+            border: 3px solid #3CB371; /* 초록색 테두리 */
+        }
+
+        /* 라디오 버튼과 체크박스에 대한 스타일을 정의합니다 */
+        .report .report_area input[type="radio"],
+        .report .report_area input[type="radio"]+label,
+        .report .report_area input[type="checkbox"],
+        .report .report_area input[type="checkbox"]+label {
+            margin: 8px;
+            cursor: pointer; /* 클릭 가능하게 설정 */
+        }
+
+        /* 체크된 라디오 버튼과 체크박스의 라벨 스타일을 정의합니다 */
+        .report .report_area input[type="radio"]:checked+label,
+        .report .report_area input[type="checkbox"]:checked+label {
+            color: blue; /* 선택된 라벨은 파란색으로 표시 */
+        }
+
+        /* 버튼 영역의 레이아웃을 설정합니다 */
+        .btn_area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        /* 청록색 버튼 스타일 */
+        .btn-cyan {
+            background: rgba(27, 188, 194, 1);
+            background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(27, 188, 194, 1)), to(rgba(24, 163, 168, 1)));
+            background: -webkit-linear-gradient(rgba(27, 188, 194, 1) 0%, rgba(24, 163, 168, 1) 100%);
+            background: -moz-linear-gradient(rgba(27, 188, 194, 1) 0%, rgba(24, 163, 168, 1) 100%);
+            background: -o-linear-gradient(rgba(27, 188, 194, 1) 0%, rgba(24, 163, 168, 1) 100%);
+            background: linear-gradient(rgba(27, 188, 194, 1) 0%, rgba(24, 163, 168, 1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1bbcc2', endColorstr='#18a3a8', GradientType=0);
+        }
+
+        /* 빨간색 버튼 스타일 */
+        .btn-red {
+            background: rgba(250, 90, 90, 1);
+            background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(250, 90, 90, 1)), to(rgba(232, 81, 81, 1)));
+            background: -webkit-linear-gradient(rgba(250, 90, 90, 1) 0%, rgba(232, 81, 81, 1) 100%);
+            background: -moz-linear-gradient(rgba(250, 90, 90, 1) 0%, rgba(232, 81, 81, 1) 100%);
+            background: -o-linear-gradient(rgba(250, 90, 90, 1) 0%, rgba(232, 81, 81, 1) 100%);
+            background: linear-gradient(rgba(250, 90, 90, 1) 0%, rgba(232, 81, 81, 1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fa5a5a', endColorstr='#e85151', GradientType=0);
+        }
+
+        /* 버튼의 기본 스타일을 정의합니다 */
+        .btn_area .btn02 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px;
+            padding: 15px;
+            width: 450px;
+            height: 90px;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+
+    <script src="jquery-3.7.1.js"></script> <!-- jQuery 라이브러리 로드 -->
+
+</head>
+<body>
+    <div class="report">
+        <div class="title_area">
+            <span class="title">설문조사</span> <!-- 설문조사 제목 -->
+        </div>
+        <div class="report_area">
+            <label class="subtitle">참여자: </label><input type="text" id="userName"> <!-- 참여자 이름 입력 -->
+        </div>
+        
+        <div class="report_area">
+            <label class="subtitle">좋아하는 도시: </label>
+            <!-- 좋아하는 도시를 선택하는 라디오 버튼들 -->
+            <input type="radio" name="bestCity" value="서울" id="city01"><label for="city01">서울</label>
+            <input type="radio" name="bestCity" value="인천" id="city02"><label for="city02">인천</label>
+            <input type="radio" name="bestCity" value="대전" id="city03"><label for="city03">대전</label>
+            <input type="radio" name="bestCity" value="부산" id="city04"><label for="city04">부산</label>
+            <input type="radio" name="bestCity" value="광주" id="city05"><label for="city05">광주</label>
+            <input type="radio" name="bestCity" value="기타" id="city06"><label for="city06">그 외</label>
+            <!-- "그 외"를 선택할 경우 입력할 수 있는 텍스트 필드 -->
+            <input type="text" id="inp_bestCity" disabled>
+        </div>
+
+        <div class="report_area">
+            <label class="subtitle">좋아하는 이유: </label>
+            <!-- 좋아하는 이유를 선택하는 체크박스들 -->
+            <input type="checkbox" name="bestReason" value="먹거리" id="res01"><label for="res01">먹거리</label>
+            <input type="checkbox" name="bestReason" value="레저" id="res02"><label for="res02">레저</label>
+            <input type="checkbox" name="bestReason" value="힐링" id="res03"><label for="res03">힐링</label>
+            <input type="checkbox" name="bestReason" value="교통" id="res04"><label for="res04">교통</label>
+            <input type="checkbox" name="bestReason" value="쇼핑" id="res05"><label for="res05">쇼핑</label>
+            <input type="checkbox" name="bestReason" value="관광" id="res06"><label for="res06">관광</label>
+        </div>
+
+        <!-- 제출 및 초기화 버튼 -->
+        <div class="btn_area">
+            <input type="button" class="btn-cyan btn02" value="제출" onclick="send()"> <!-- 제출 버튼 -->
+            <input type="button" class="btn-red btn02" value="초기화" onclick="reset()"> <!-- 초기화 버튼 -->
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // "그 외"를 선택하면 입력 필드를 활성화
+            $('input[name="bestCity"]').on('change', function() {
+                if ($(this).val() === "기타") {
+                    $('#inp_bestCity').prop('disabled', false).focus(); // 텍스트 필드를 활성화하고 포커스 설정
+                } else {
+                    $('#inp_bestCity').prop('disabled', true).val(''); // 비활성화하고 값을 초기화
+                }
+            });
+        });
+
+        // 제출 버튼 클릭 시 실행되는 함수
+        function send() {
+            let userName = $('#userName').val(); // 참여자 이름 가져오기
+            let bestCity = $('input[name="bestCity"]:checked').val(); // 선택된 도시 가져오기
+            let bestCityOther = $('#inp_bestCity').val(); // "그 외"에 입력된 도시 가져오기
+            let bestReasons = [];
+
+            // 선택된 이유들을 배열에 추가
+            $('input[name="bestReason"]:checked').each(function() {
+                bestReasons.push($(this).val());
+            });
+
+            // 유효성 검사
+            if (!userName) {
+                alert('참여자 이름을 입력하세요.');
+                return;
+            }
+
+            if (!bestCity) {
+                alert('좋아하는 도시를 선택하세요.');
+                return;
+            }
+
+            if (bestCity === "기타" && !bestCityOther) {
+                alert('도시 이름을 입력하세요.');
+                return;
+            }
+
+            if (bestReasons.length === 0) {
+                alert('좋아하는 이유를 하나 이상 선택하세요.');
+                return;
+            }
+
+            // 결과를 JSON 형식으로 콘솔에 출력
+            let result = {
+                userName: userName, // 참여자 이름
+                bestCity: bestCity === "기타" ? bestCityOther : bestCity, // 도시 선택 결과
+                bestReasons: bestReasons // 선택된 이유들
+            };
+
+            console.log(JSON.stringify(result, null, 2)); // JSON 형식으로 콘솔에 출력
+
+            alert('제출되었습니다. 콘솔을 확인하세요.'); // 제출 완료 메시지
+        }
+
+        // 초기화 버튼 클릭 시 실행되는 함수
+        function reset() {
+            // 폼 초기화
+            $('#userName').val(''); // 이름 필드 초기화
+            $('input[name="bestCity"]').prop('checked', false); // 모든 도시 선택 해제
+            $('#inp_bestCity').prop('disabled', true).val(''); // "그 외" 필드 비활성화 및 초기화
+            $('input[name="bestReason"]').prop('checked', false); // 모든 이유 선택 해제
+        }
+    </script>
+</body>
+</html>

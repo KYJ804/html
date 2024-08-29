@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="jquery-3.7.1.js"></script>
+</head>
+<body>
+
+    <h1>취미</h1>
+    
+<input type="checkbox" name="hobby" id="hobby01" id="hooby01" value="독서"><label for="hooby01">독서</label>
+<input type="checkbox" name="hobby" id="hooby02" id="hooby02" value="레저"><label for="hooby02">레저</label>
+<input type="checkbox" name="hobby" id="hooby03" id="hooby03" value="자전거"><label for="hooby03">자전거</label>
+<input type="checkbox" name="hobby" id="hooby04" id="hooby04" value="게임"><label for="hooby04">게임</label>
+<input type="checkbox" name="hobby" id="hooby05" id="hooby05" value="영화"><label for="hooby05">영화</label>
+<input type="checkbox" name="hobby" id="hooby06" id="hooby06" value="코딩"><label for="hooby06">코딩</label>
+
+<input type="button" value="값 확잉ㄴ하기" onclick="send()">
+<input type="button" value="값 확잉ㄴ하기2" onclick="send2()">
+<input type="button" value="값 확잉ㄴ하기3" onclick="send3()"><br>
+<input type="button" value="모두선택" onclick="allcheck()">
+<input type="button" value="모두해제" onclick="zerocheck()">
+
+
+<script>
+            function sand(){
+            let hobby = $('input[name="hobby"]');
+
+            for(let i=0; i<hobby.length; i++){
+
+                if(hobby[i].checked ==  true){
+                    console.log('선택 된 값 : ', hobby[i].value);
+                }
+            }
+
+        }
+
+        function sand2(){
+            let hobby = $('input[name="hobby"]:checked'); //체크된 목록만 갖고 온다
+            let length = $('input[name="hobby"]:checked').length; //체크된 갯수 0=> 선택된 것이 
+
+            for(let i=0; i< hobby.length; i++){
+                console.log('선택된 value: ', hobby[i].value);
+            }
+        }
+
+        function sand3(){
+
+            //하나라도 체크 되었는지 확인 여부
+            let check = $('input[name="hobby"]').is(':checked)');
+            if($('input[name="hobby"]').is(':checked)')){
+                //한 개라도 체크 되었다.
+
+            }
+
+
+
+            $('input[name="hobby"]').each(index =>{
+                //자신의 행이 소속된 element 를 this.
+                //자기 자신이 check 여부 판단
+                if($(this).is(':checked')){
+                    console.log($(this).val());
+                }
+            })
+
+        }
+
+        //체크 모드 선택하기
+        function allcheck(){
+            $('input[name="hobby"]').prop('checked',true);
+        }
+        //모두 해제
+        function zerocheck(){
+            $('input[name="hobby"]').prop('checked',false);
+        }
+
+
+
+</script>
+
+
+    
+</body>
+</html>
