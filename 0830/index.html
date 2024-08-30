@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>첫 번째 페이지</title>
+    <style>
+        /* 기본 스타일 */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .card {
+            padding: 20px;
+            width: 300px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .body {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .info {
+            font-size: 12px;
+            color: #999;
+            text-align: right;
+        }
+
+        .input-container {
+            margin-bottom: 20px;
+        }
+
+        .input-container label {
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .input-container input {
+            padding: 5px;
+            font-size: 14px;
+        }
+    </style>
+    <script src="jquery-3.7.1.js"></script>
+</head>
+<body>
+    <div class="input-container">
+        <label for="postId">게시물 ID 입력:</label>
+        <input type="number" id="postId" placeholder="1">
+        <button onclick="loadPost()">불러오기</button>
+    </div>
+
+    <div class="card" id="postContent">
+        <!-- JSON 데이터를 불러와서 이곳에 표시 -->
+    </div>
+
+    <input type="button" value="다음 페이지로 이동" onclick="moveToNextPage()">
+
+    <script>
+        function loadPost() {
+            const postId = document.getElementById('postId').value;
+            $.ajax({
+                url: `https://jsonplaceholder.typicode.com/posts/${postId}`,
+                type: 'get',
+                dataType: 'json',
+                success: function(data) {
+                    let postContent = `
+                        <div class="title">${data.title}</div>
+                        <div class="body">${data.body}</div>
+                        <div class="info">User ID: ${data.userId} | Post ID: ${data.id}</div>
+                    `;
+                    $('#postContent').html(postContent);
+                },
+                error: function() {
+                    $('#postContent').html('<p>게시물을 불러올 수 없습니다. ID를 확인하세요.</p>');
+                }
+            });
+        }
+
+        function moveToNextPage() {
+            const postId = document.getElementById('postId').value;
+            // 두 번째 페이지로 이동하면서 쿼리 파라미터로 postId 전달
+            window.location.href = `second_page.html?postId=${postId}`;
+        }
+    </script>
+</body>
+</html>
