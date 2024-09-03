@@ -58,8 +58,8 @@
         </tr>
         <tr>
             <td>
-                <input type="checkbox" name="fontOptions" value="sup">위첨자
-                <input type="checkbox" name="fontOptions" value="sub">아래첨자
+                <input type="checkbox" id="superscript" value="super">위첨자
+                <input type="checkbox" id="subscript" value="sub">아래첨자
                 <input type="checkbox" name="fontOptions" value="text-transform: lowercase">소문자로
                 <input type="checkbox" name="fontOptions" value="text-transform: uppercase">대문자로
             </td>
@@ -87,26 +87,24 @@
                 // 초기 스타일 설정
                 let styles = `color: ${color}; font-size: ${size}em;`;
 
-                // 텍스트 변환을 위한 HTML 태그 변수
-                let htmlText = text;
-
                 // 선택된 체크박스 옵션 가져오기
                 $('input[name="fontOptions"]:checked').each(function() {
-                    let option = $(this).val();
-                    if (option === "line-through") {
-                        styles += "text-decoration: line-through; ";
-                    } else if (option === "sup") {
-                        htmlText = `<sup>${htmlText}</sup>`;
-                    } else if (option === "sub") {
-                        htmlText = `<sub>${htmlText}</sub>`;
-                    } else {
-                        styles += option + '; ';
-                    }
+                    styles += $(this).val() + '; ';
                 });
 
                 // 스타일 적용
                 resultElement.attr('style', styles);
-                resultElement.html(htmlText);
+
+                // 위첨자와 아래첨자 처리
+                if ($('#superscript').is(':checked')) {
+                    text = `<sup>${text}</sup>`;
+                }
+                if ($('#subscript').is(':checked')) {
+                    text = `<sub>${text}</sub>`;
+                }
+
+                // HTML을 사용해 텍스트 적용
+                resultElement.html(text);
             });
         });
     </script>
